@@ -1246,9 +1246,9 @@ def get_package_names_with_recursive_dependencies(packages, pkg_names):
 def apply_platform_specific_defaults(args):
     # add Windows specific defaults
     if sys.platform == 'win32':
-        # default to use nmake if on Windows and if not using ninja
-        if not args.use_ninja:
-            args.use_nmake = True
+        # default to use ninja if on Windows and if not using nmake
+        if not args.use_nmake:
+            args.use_ninja = True
         # use RelWithDebInfo as default build type if on Windows
         prefix = '-DCMAKE_BUILD_TYPE='
         if not any(a.startswith(prefix) for a in args.cmake_args):
